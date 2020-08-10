@@ -29,6 +29,13 @@ namespace HayGym_API
         
         public void ConfigureServices(IServiceCollection services)
         {
+            var settings = Configuration.GetSection("AppSettings");
+            string connectionString = settings.Get<AppSettings>().HaiGymConnectionString;
+
+            services.Configure<AppSettings>(settings);
+
+            services.AddDbContext<HaiGymContext>(option => option.UseSqlServer(connectionString));
+
             /*
             services.AddCors(options =>
             {
