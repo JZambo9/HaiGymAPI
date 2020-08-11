@@ -79,9 +79,9 @@ namespace HayGym_API
 
             app.UseRouting();
 
-            app.UseCors(MyCors);
-
             app.UseAuthorization();
+
+            app.UseCors(MyCors);
 
             app.UseEndpoints(endpoints =>
             {

@@ -9,7 +9,7 @@ using HayGym_API.Models;
 
 namespace HayGym_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AtletaController : ControllerBase
     {
@@ -73,11 +73,11 @@ namespace HayGym_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Atleta
+        // POST: api/AddAtleta
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Atleta>> PostAtleta(Atleta atleta)
+        public async Task<ActionResult<Atleta>> AddAtleta(Atleta atleta)
         {
             _context.Atleta.Add(atleta);
             try
