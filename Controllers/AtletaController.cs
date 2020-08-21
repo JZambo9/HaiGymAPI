@@ -20,7 +20,7 @@ namespace HayGym_API.Controllers
             _context = context;
         }
 
-        // GET: api/GetListAtleti
+        // GET: api/Atleta/GetListAtleti
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Atleta>>> GetListAtleti()
         {
@@ -39,38 +39,6 @@ namespace HayGym_API.Controllers
             }
 
             return atleta;
-        }
-
-        // PUT: api/Atleta/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAtleta(string id, Atleta atleta)
-        {
-            if (id != atleta.IdAtleta)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(atleta).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AtletaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/AddAtleta
@@ -97,6 +65,38 @@ namespace HayGym_API.Controllers
             }
 
             return CreatedAtAction("GetAtleta", new { id = atleta.IdAtleta }, atleta);
+        }
+
+        // PUT: api/UpdateAtleta/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAtleta(string id, [FromBody] Atleta atleta)
+        {
+            if (id != atleta.IdAtleta)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(atleta).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AtletaExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
         // DELETE: api/Atleta/5
