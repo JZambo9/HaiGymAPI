@@ -36,17 +36,6 @@ namespace HayGym_API
 
             services.AddDbContext<HaiGymContext>(option => option.UseSqlServer(connectionString));
 
-            /*
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                    builder.SetIsOriginAllowed(_ => true)
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
-            });
-            */
-
             services.AddCors(options =>
             {
                 options.AddPolicy(
@@ -58,8 +47,8 @@ namespace HayGym_API
                             "https://localhost:5001",
                             "https://localhost:44378")
                         .AllowAnyHeader()
-                        .AllowAnyMethod();
-                        //.AllowCredentials();
+                        .AllowAnyMethod()
+                        .AllowCredentials();
                     });
             });
 
