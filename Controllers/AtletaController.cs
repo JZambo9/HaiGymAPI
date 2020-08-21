@@ -71,7 +71,7 @@ namespace HayGym_API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAtleta(string id, [FromBody] Atleta atleta)
+        public async Task<IActionResult> UpdateAtleta(string id, Atleta atleta)
         {
             if (id != atleta.IdAtleta)
             {
